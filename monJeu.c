@@ -15,7 +15,7 @@ int main(){
 	srand(time(NULL));
     int nbgen=rand()%2+1;    //entre 1&2
     int degatsPoisonMonstre = 50;
-    int compteurPoison = 0;
+    int compteurPoison = 3;
 
 
 
@@ -26,7 +26,7 @@ printf("un monstre vous surprend durant votre sieste vosu decidez de le combattr
 printf("Le Grand Chien-Loup possede %d points de vie.\n",pvMonstre);
 printf("Vous possedez %d points de vie.\n",pvJoueur);
 	while (pvMonstre>0) {
-		printf("(1) attaquer (2) defendre (3) poison\n");
+		printf("(1) attaquer (2) defendre (3) poison (4) antidote\n");
 		scanf("%d",&choixJoueur);
 		while (pointMagie <=60000){
 			pointMagie++;
@@ -46,9 +46,13 @@ printf("Vous possedez %d points de vie.\n",pvJoueur);
 		}
 		else if (choixJoueur==3) {
 			printf("vous infliger un poison au Grand Chien-Loup il ne pourra plus sans defaire avant la fin de la partie, ce poison lui infligera %d de degats a chaque tour.\n",degatsPoison );
-			pvMonstre = pvMonstre-degatsPoison
+			printf("cependant ce poison te coutera 3 points de magie.\n");
+			pvMonstre = pvMonstre-degatsPoison;
 			printf("Le Grand Chien-Loup possede desormais %d points de vie.\n",pvMonstre);
-		
+		}
+		else if (choixJoueur==4) {
+			printf("vous décidez de vous débarrasser du poison mit par le Grand Chien-Loup.\n");
+			degatsPoisonMonstre=0;
 		}
 		printf("(1) il attaque (2) il t'empoisonne\n");
 		if (nbgen==1){
@@ -58,14 +62,19 @@ printf("Vous possedez %d points de vie.\n",pvJoueur);
 		printf("Vous possedez maintenant %d points de vie.\n",pvJoueur);
 		
 			else if (nbgen==2){
-				for (compteurPoison<3){
-					compteurPoison++
+				for (compteurPoison>0){
+					compteurPoison--;
 			printf("Le Grand Chien-Loup vous empoisonne, il vous enleve %d points de vie.\n",degatsMonstre);
 			printf("vous garderez ce poison en vous pendant 3 tours.  \n");
 				}	
 			}
 			pvJoueur = pvJoueur-degatsPoisonMonstre;
 			printf("Vous possedez maintenant %d points de vie.\n",pvJoueur);
+
+		}
+		if (choixJoueur==3, pointMagie<3) {
+			return 0;
+		}
 
 
 		/*fin de partie*/
@@ -79,5 +88,5 @@ printf("Vous possedez %d points de vie.\n",pvJoueur);
 	if (pvMonstre<=0) {
 		printf("Le Grand Chien-Loup a succombe a ses blessures.");
 	}
- 
+ return 0
 }
