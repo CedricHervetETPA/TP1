@@ -6,15 +6,23 @@ int main(){
 	int choixJoueur;
 	int degatsJoueur;
 	int degatsMonstre;
+	int pointMagie;
 
 	pvMonstre = 500;
 	pvJoueur = 1000;
 	degatsJoueur = 100;
 	degatsMonstre = 20;
+	pointMagie = 0;
+	
+
 
 	while (pvMonstre>0) {
-		printf("(1) attaquer (2) defendre\n");
+		printf("(1) attaquer (2) defendre \n");
 		scanf("%d",&choixJoueur);
+		while (pointMagie <=60000){
+			pointMagie++;
+		}
+		printf("vous avez %d de points de magie\n",pointMagie );
 		if (choixJoueur==1) {
 			printf("Vous frappez le Grand Chien-Loup et lui infligez %d points de degats.\n",degatsJoueur);
 			pvMonstre = pvMonstre-degatsJoueur;
